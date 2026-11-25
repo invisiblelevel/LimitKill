@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    name: Windows checks
+    runs-on: windows-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri -> target
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Frontend type + Svelte checks
+        run: npm run check
+
+      - name: Frontend production build
+        run: npm run build
+
+      - name: Rust unit tests
+        run: cargo test --manifest-path src-tauri/Cargo.toml --lib
+
+      - name: Rust production feature build
+        run: cargo build --manifest-path src-tauri/Cargo.toml --features custom-protocol

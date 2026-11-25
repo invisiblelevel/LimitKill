@@ -1,0 +1,129 @@
+:root {
+  /* Тёплая бумажная палитра: без синего, мягкий контраст */
+  --bg: #f5f2ea;
+  --bg-soft: #faf7f1;
+  --bg-elev: #fffdf9;
+  --panel: #ece6da;
+  --panel-strong: #e3dccd;
+  --ink: #2f2b23;
+  --ink-2: #5f584b;
+  --muted: #746b5d;
+  --line: #dfd7c8;
+  --line-strong: #cdc2b0;
+
+  --accent: #4f7a5a;
+  --accent-strong: #3c6148;
+  --accent-soft: #e5eee3;
+  --accent-tint: #eef4ec;
+
+  --warm: #b87545;
+  --warm-soft: #f7eadf;
+  --danger: #ad4a3f;
+  --danger-soft: #f7e6e2;
+  --ok: #4f7a5a;
+  --ok-soft: #e5eee3;
+
+  --radius: 16px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+
+  --shadow-sm: 0 1px 2px rgba(70, 58, 42, 0.06), 0 3px 12px rgba(70, 58, 42, 0.05);
+  --shadow-md: 0 12px 40px rgba(70, 58, 42, 0.14);
+  --shadow-pop: 0 18px 48px rgba(58, 48, 34, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #e7bd6c;
+  color: #2a2115;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: 'Segoe UI Variable Text', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    Arial, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow: hidden;
+  background:
+    radial-gradient(1100px 520px at 8% -10%, #fcf9f3 0%, rgba(252, 249, 243, 0) 70%),
+    radial-gradient(900px 500px at 100% 0%, #f2f0e6 0%, rgba(242, 240, 230, 0) 65%),
+    var(--bg);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  outline: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(79, 122, 90, 0.45);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: #e7bd6c;
+  color: #2a2115;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d5cbbb;
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c1b4a0;
+  background-clip: content-box;
+}
+
+code,
+pre {
+  font-family: 'Cascadia Code', 'Cascadia Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.spin {
+  animation: lk-spin 1s linear infinite;
+}
+
+@keyframes lk-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
